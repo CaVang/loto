@@ -9,14 +9,14 @@ interface DrawnNumbersProps {
 }
 
 function DrawnNumbersComponent({ drawnNumbers }: DrawnNumbersProps) {
-  const numbers = Array.from({ length: 99 }, (_, i) => i + 1);
+  const numbers = Array.from({ length: 90 }, (_, i) => i + 1);
   const drawnSet = new Set(drawnNumbers);
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
         <span className={styles.counter}>
-          Đã quay: <strong>{drawnNumbers.length}</strong>/99
+          Đã quay: <strong>{drawnNumbers.length}</strong>/90
         </span>
       </div>
       <div className={styles.grid}>

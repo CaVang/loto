@@ -3,7 +3,7 @@
 import { useState, useCallback, useRef } from "react";
 import { getSecureRandom } from "@/utils/random";
 
-const ALL_NUMBERS = Array.from({ length: 99 }, (_, i) => i + 1);
+const ALL_NUMBERS = Array.from({ length: 90 }, (_, i) => i + 1);
 
 export interface GameState {
   drawnNumbers: number[];

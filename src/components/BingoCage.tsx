@@ -3,9 +3,8 @@
 import { memo, useMemo } from "react";
 import styles from "./BingoCage.module.css";
 
-const MAX_TOTAL = 99;
-const MAX_VISUAL_BALLS = 30;
-const BALL_SIZE_PX = 18;
+const MAX_TOTAL = 90;
+const BALL_SIZE_PX = 10;
 const CAGE_SIZE_PX = 260;
 const SPHERE_RADIUS_PX = 110; // rings are 220px wide
 
@@ -75,13 +74,8 @@ interface BingoCageProps {
 }
 
 function BingoCageComponent({ isSpinning, remainingCount }: BingoCageProps) {
-  const visualBallCount = useMemo(
-    () => Math.round((remainingCount / MAX_TOTAL) * MAX_VISUAL_BALLS),
-    [remainingCount]
-  );
-
   const ballPositions = useMemo(
-    () => generateBallPositions(MAX_VISUAL_BALLS),
+    () => generateBallPositions(MAX_TOTAL),
     []
   );
 
@@ -118,7 +112,7 @@ function BingoCageComponent({ isSpinning, remainingCount }: BingoCageProps) {
           ))}
 
           {/* Balls inside cage — pile at bottom, scatter when spinning */}
-          {ballPositions.slice(0, visualBallCount).map((pos, i) => (
+          {ballPositions.slice(0, remainingCount).map((pos, i) => (
             <div
               key={`inner-ball-${i}`}
               className={styles.innerBall}
@@ -127,9 +121,7 @@ function BingoCageComponent({ isSpinning, remainingCount }: BingoCageProps) {
                   "--ball-rest-x": `${pos.x}%`,
                   "--ball-rest-y": `${pos.y}%`,
                   "--ball-delay": `${pos.delay}s`,
-                  "--ball-hue": `${pos.hue}`,
                   // Chaos positions constrained to sphere via polar coords
-                  // Max radius ~32% to stay well inside sphere (sphere radius ≈ 42%)
                   "--chaos-x1": `${Math.cos(i * 2.1) * (20 + (i % 5) * 3)}%`,
                   "--chaos-y1": `${50 + Math.sin(i * 2.1) * (20 + (i % 5) * 3)}%`,
                   "--chaos-x2": `${Math.cos(i * 1.4 + 2) * (15 + (i % 7) * 2.5)}%`,
@@ -138,7 +130,9 @@ function BingoCageComponent({ isSpinning, remainingCount }: BingoCageProps) {
                   "--chaos-y3": `${50 + Math.sin(i * 3.2 + 4) * (18 + (i % 6) * 2.8)}%`,
                 } as React.CSSProperties
               }
-            />
+            >
+              TẾT
+            </div>
           ))}
 
           {/* Exit chute */}

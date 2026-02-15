@@ -22,7 +22,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: "Lô Tô - Quay Số",
-  description: "Ứng dụng quay số Lô Tô ngẫu nhiên từ 1 đến 99 với lồng quay bingo 3D",
+  description: "Ứng dụng quay số Lô Tô ngẫu nhiên từ 1 đến 90 với lồng quay bingo 3D",
 };
 
 export default function RootLayout({
